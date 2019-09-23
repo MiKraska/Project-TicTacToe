@@ -1,4 +1,4 @@
-package sample;
+package kraska.tictactoe;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -39,12 +39,7 @@ public class Main extends Application {
     }
 
     static boolean checkBoardState() {
-        if (board[0].getButton().getText().equals(board[3].getButton().getText())
-                && board[0].getButton().getText().equals(board[6].getButton().getText())
-                && !board[0].getButton().getText().isEmpty()) {
-            gameEnd((board[0].getButton().getText()));
-            return true;
-        } else if (board[1].getButton().getText().equals(board[4].getButton().getText())
+        if (board[1].getButton().getText().equals(board[4].getButton().getText())
                 && board[1].getButton().getText().equals(board[7].getButton().getText())
                 && !board[1].getButton().getText().isEmpty()) {
             gameEnd((board[1].getButton().getText()));
@@ -79,19 +74,24 @@ public class Main extends Application {
                 && !board[2].getButton().getText().isEmpty()) {
             gameEnd((board[2].getButton().getText()));
             return true;
+        } else if (board[0].getButton().getText().equals(board[3].getButton().getText())
+                && board[0].getButton().getText().equals(board[6].getButton().getText())
+                && !board[0].getButton().getText().isEmpty()) {
+            gameEnd((board[0].getButton().getText()));
+            return true;
         } else if (checkIfGameEnded()) {
-            gameEnd("It's a tie!");
+            gameEnd("It's a Tie!");
             return true;
         }
         return false;
     }
 
     private static void gameEnd(String message) {
-        if(message.equals("O")){
+        if (message.equals("O")) {
             message = "Computer won!";
-        } else
+        } else if (message.equals("X")) {
             message = "You won!";
-
+        }
         for (GameBoardTile gameBoardTile : board) {
             gameBoardTile.getButton().setDisable(true);
         }

@@ -1,10 +1,8 @@
-package sample;
+package kraska.tictactoe;
 
 import javafx.scene.control.Button;
 
 import java.util.Random;
-
-import static sample.Main.board;
 
 public class GameBoardTile {
     private Button tile = new Button();
@@ -30,9 +28,9 @@ public class GameBoardTile {
         Random random = new Random();
         while (!didCompMoved) {
             int randomButton = random.nextInt(9);
-            if (board[randomButton].getButton().getText().isEmpty()) {
-                board[randomButton].getButton().setText("O");
-                board[randomButton].getButton().setStyle("-fx-text-fill: darkred;");
+            if (Main.board[randomButton].getButton().getText().isEmpty()) {
+                Main.board[randomButton].getButton().setText("O");
+                Main.board[randomButton].getButton().setStyle("-fx-text-fill: darkred;");
                 Main.checkBoardState();
                 Main.increaseBoardState();
                 didCompMoved = true;
